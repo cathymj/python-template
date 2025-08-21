@@ -1,0 +1,26 @@
+name: Autograding I/O Tests
+
+on: [push]
+
+jobs:
+  io-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout student code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run case 1
+        run: |
+          python3 main.py < tests/case1.in > actual1.out
+          diff -q actual1.out tests/case1.out
+
+      - name: Run case 2
+        run: |
+          python3 main.py < tests/case2.in > actual2.out
+          diff -q actual2.out tests/case2.out
