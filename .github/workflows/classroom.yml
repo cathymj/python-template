@@ -17,10 +17,13 @@ jobs:
 
       - name: Run case 1
         run: |
-          python main.py < tests/io/case1.in | diff -q - tests/io/case1.out
+          python main.py < tests/io/case1.in | diff -q --strip-trailing-cr - tests/io/case1.out
+
 
       - name: Run case 2
         run: |
-          python main.py < tests/io/case2.in | diff -q - tests/io/case2.out
+          python main.py < tests/io/case2.in | diff -q --strip-trailing-cr - tests/io/case2.out
+
+
 
 
